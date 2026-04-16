@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamil Nadu Education: The Full Story</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080b12;
+  --surface: #0d1220;
+  --surface2: #111827;
+  --border: #1f2d40;
+  --border2: #243347;
+  --text: #e8edf5;
+  --muted: #6b7e96;
+  --dimmed: #3a4a5c;
+  --gold: #f0a500;
+  --gold2: #fbbf24;
+  --red: #ef4444;
+  --red2: #f87171;
+  --green: #10b981;
+  --green2: #34d399;
+  --blue: #3b82f6;
+  --blue2: #60a5fa;
+  --purple: #8b5cf6;
+  --teal: #14b8a6;
+  --orange: #f97316;
+  --accent: #f0a500;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── HERO ─────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 24px;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(240,165,0,.12) 0%, transparent 65%),
+              radial-gradient(ellipse 50% 40% at 80% 70%, rgba(59,130,246,.07) 0%, transparent 60%);
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before, .hero-eyebrow::after { content: ''; flex: 1 1 40px; height: 1px; background: var(--gold); opacity: .4; }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  max-width: 900px;
+  margin-bottom: 20px;
+}
+.hero h1 em { color: var(--gold); font-style: normal; }
+.hero h1 .break { color: var(--red2); }
+.hero-sub {
+  max-width: 660px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin-bottom: 40px;
+  line-height: 1.8;
+}
+.hero-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: .68rem;
+  color: var(--dimmed);
+  letter-spacing: .06em;
+}
+
+/* ── CLAIM BANNER ─────────────────────── */
+.claim-banner {
+  background: linear-gradient(135deg, #1a2035 0%, #0d1627 100%);
+  border: 1px solid var(--border2);
+  border-left: 4px solid var(--gold);
+  margin: 0 24px 0;
+  padding: 28px 32px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.claim-banner::after {
+  content: '"';
+  position: absolute;
+  right: 24px; top: -10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 10rem;
+  color: rgba(240,165,0,.06);
+  line-height: 1;
+}
+.claim-label {
+  font-family: 'DM Mono', monospace;
+  font-size: .65rem;
+  letter-spacing: .14em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.claim-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--text);
+  line-height: 1.7;
+  max-width: 820px;
+}
+.claim-source { font-size: .75rem; color: var(--muted); margin-top: 10px; }
+
+/* ── LAYOUT ───────────────────────────── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 60px 0 20px; }
+
+.section-header { margin-bottom: 32px; }
+.section-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: .65rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.section-title em { color: var(--red2); font-style: normal; }
+.section-desc { color: var(--muted); font-size: .9rem; max-width: 700px; line-height: 1.7; }
+
+/* ── GRIDS ────────────────────────────── */
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+/* ── CARDS ────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.card:hover { border-color: var(--border2); }
+.card-title {
+  font-size: .72rem;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+/* ── KPI CARDS ────────────────────────── */
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+.kpi .num { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 700; line-height: 1; }
+.kpi .lbl { font-size: .72rem; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+.kpi .delta { font-size: .75rem; margin-top: 8px; display: flex; align-items: center; gap: 5px; }
+.kpi .delta.up { color: var(--green2); }
+.kpi .delta.down { color: var(--red2); }
+.kpi .delta.warn { color: var(--gold2); }
+.kpi.accent-gold { border-color: rgba(240,165,0,.3); }
+.kpi.accent-red { border-color: rgba(239,68,68,.3); }
+.kpi.accent-green { border-color: rgba(16,185,129,.3); }
+.kpi.accent-blue { border-color: rgba(59,130,246,.3); }
+
+/* ── STAT PILL ───────────────────────── */
+.pill { display: inline-block; font-size: .68rem; padding: 3px 10px; border-radius: 20px; font-family: 'DM Mono', monospace; }
+.pill-g { background: rgba(16,185,129,.15); color: var(--green2); }
+.pill-r { background: rgba(239,68,68,.15); color: var(--red2); }
+.pill-y { background: rgba(251,191,36,.15); color: var(--gold2); }
+.pill-b { background: rgba(59,130,246,.15); color: var(--blue2); }
+.pill-p { background: rgba(139,92,246,.15); color: #c4b5fd; }
+
+/* ── CLAIM BOX ────────────────────────── */
+.claim-box {
+  border-left: 3px solid;
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  font-size: .85rem;
+  line-height: 1.75;
+  margin: 12px 0;
+}
+.claim-box.gold { border-color: var(--gold); background: rgba(240,165,0,.06); }
+.claim-box.red { border-color: var(--red); background: rgba(239,68,68,.06); }
+.claim-box.green { border-color: var(--green); background: rgba(16,185,129,.06); }
+.claim-box strong { color: var(--gold2); }
+.claim-box.red strong { color: var(--red2); }
+.claim-box.green strong { color: var(--green2); }
+
+/* ── CHAPTER DIVIDER ─────────────────── */
+.chapter {
+  display: flex; align-items: center; gap: 16px;
+  padding: 40px 0 8px;
+}
+.chapter-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: rgba(240,165,0,.15);
+  line-height: 1;
+  min-width: 60px;
+}
+.chapter-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border2), transparent); }
+.chapter-label {
+  font-family: 'DM Mono', monospace;
+  font-size: .65rem;
+  letter-spacing: .15em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+/* ── TABLE ────────────────────────────── */
+.data-table { width: 100%; border-collapse: collapse; font-size: .78rem; }
+.data-table th { background: var(--bg); color: var(--muted); text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); font-family: 'DM Mono', monospace; font-size: .65rem; letter-spacing: .08em; text-transform: uppercase; }
+.data-table td { padding: 10px 12px; border-bottom: 1px solid rgba(31,45,64,.6); }
+.data-table tr:hover td { background: rgba(59,130,246,.04); }
+
+/* ── BAR COMPARE ─────────────────────── */
+.compare-row { margin-bottom: 18px; }
+.compare-label { font-size: .78rem; color: var(--muted); margin-bottom: 6px; display: flex; justify-content: space-between; }
+.compare-bars { display: flex; gap: 4px; }
+.bar { height: 28px; border-radius: 4px; display: flex; align-items: center; padding: 0 10px; font-size: .72rem; font-weight: 600; transition: width .8s cubic-bezier(.4,0,.2,1); min-width: 30px; white-space: nowrap; }
+.bar-govt { background: rgba(59,130,246,.7); color: #fff; }
+.bar-pvt { background: rgba(245,158,11,.7); color: #000; }
+.bar-legend { display: flex; gap: 16px; margin-bottom: 16px; font-size: .73rem; color: var(--muted); }
+.dot { width: 10px; height: 10px; border-radius: 2px; display: inline-block; margin-right: 5px; vertical-align: middle; }
+
+/* ── VERDICT BLOCK ───────────────────── */
+.verdict {
+  background: linear-gradient(135deg, rgba(239,68,68,.08), rgba(240,165,0,.06));
+  border: 1px solid rgba(239,68,68,.25);
+  border-radius: 16px;
+  padding: 32px;
+  margin: 32px 0;
+  position: relative;
+  overflow: hidden;
+}
+.verdict::before {
+  content: '!';
+  position: absolute;
+  right: 24px; top: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 8rem;
+  color: rgba(239,68,68,.06);
+  line-height: 1;
+}
+.verdict-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--red2);
+  margin-bottom: 14px;
+}
+.verdict p { color: var(--muted); font-size: .88rem; line-height: 1.9; margin-bottom: 10px; }
+.verdict strong { color: var(--text); }
+.verdict em { color: var(--gold2); font-style: normal; }
+
+/* ── ASER SECTION ────────────────────── */
+.aser-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(20,184,166,.12); border: 1px solid rgba(20,184,166,.3);
+  color: var(--teal); border-radius: 20px; padding: 4px 14px;
+  font-family: 'DM Mono', monospace; font-size: .65rem; letter-spacing: .1em;
+  text-transform: uppercase; margin-bottom: 14px;
+}
+
+/* ── STATE COMPARISON ────────────────── */
+.state-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.state-name { font-size: .75rem; color: var(--muted); width: 120px; text-align: right; flex-shrink: 0; }
+.state-bar-track { flex: 1; height: 20px; background: var(--surface2); border-radius: 4px; overflow: hidden; }
+.state-bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-size: .68rem; font-weight: 600; transition: width 1s ease; }
+.state-val { font-size: .72rem; color: var(--muted); width: 36px; flex-shrink: 0; }
+.tn-highlight .state-bar-fill { background: linear-gradient(90deg, var(--blue), var(--teal)) !important; }
+.tn-highlight .state-name { color: var(--text); font-weight: 600; }
+
+/* ── FUNNEL ───────────────────────────── */
+.funnel-wrap { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.funnel-block {
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 6px; font-weight: 600; font-size: .82rem;
+  transition: width .8s ease;
+  padding: 10px 18px; text-align: center;
+  flex-direction: column; gap: 2px;
+}
+.funnel-block .f-pct { font-size: 1.2rem; }
+.funnel-block .f-desc { font-size: .7rem; font-weight: 400; opacity: .85; }
+.funnel-arrow { color: var(--dimmed); font-size: 1rem; }
+
+/* ── SOURCE STRIP ────────────────────── */
+.sources {
+  border-top: 1px solid var(--border);
+  padding: 32px 0 60px;
+  font-size: .7rem;
+  color: var(--dimmed);
+  line-height: 1.9;
+}
+.sources strong { color: var(--muted); }
+
+canvas { max-height: 300px; }
+
+/* ── SCROLLBAR ───────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+/* ── RESPONSIVE ──────────────────────── */
+@media (max-width: 768px) {
+  .grid2, .grid3, .grid4 { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-eyebrow">Tamil Nadu · Education Report · 2005 – 2025</div>
+  <h1>The <em>95% Pass Rate</em><br>and the <span class="break">Story it Hides</span></h1>
+  <p class="hero-sub">Tamil Nadu's government schools educate half the state's children and celebrate near-universal board exam results. But what really happens to those children after the certificate? A data-driven investigation.</p>
+  <div class="hero-meta">Sources: ASER 2024 · DGE Tamil Nadu · Justice Murugesan Commission · DOTE TN · IIT Madras · The Wire · UDISE+ 2024-25</div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CHAPTER 1 — THE GOVERNMENT'S CLAIM
+════════════════════════════════════════ -->
+<div class="container">
+
+  <div class="chapter">
+    <div class="chapter-num">01</div>
+    <div class="chapter-label">The Government's Claim</div>
+    <div class="chapter-line"></div>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag">DMK Government · 2021–2025</div>
+    <h2 class="section-title">What the <em>Headlines Say</em></h2>
+    <p class="section-desc">The DMK government under CM MK Stalin has touted significant wins in education. Here's their narrative — and then we break each claim against data.</p>
+  </div>
+
+  <div class="claim-banner" style="margin-bottom:32px;">
+    <div class="claim-label">Official Government Narrative</div>
+    <div class="claim-text">"Tamil Nadu's government schools have achieved a <strong style="color:var(--gold)">95% pass rate</strong> in the 12th board exams. College enrollment among government school students has risen from <strong style="color:var(--gold)">45% to 74%</strong> in just three years. The 7.5% reservation has opened doors to engineering and medical colleges. Tamil Nadu leads India with the highest Gross Enrollment Ratio of <strong style="color:var(--gold)">47%</strong> in higher education."</div>
+    <div class="claim-source">— Tamil Nadu School Education Department press releases, 2022–2025 · DGE TN result announcements</div>
+  </div>
+
+  <!-- Claim KPIs -->
+  <div class="grid4" style="margin-bottom:24px;">
+    <div class="kpi accent-gold">
+      <div class="num" style="color:var(--gold)">95%</div>
+      <div class="lbl">HSC (12th) pass rate claimed by govt — 2025</div>
+      <div class="delta warn">⚠ Govt schools: 91.94%; Private: ~97.5%</div>
+    </div>
+    <div class="kpi accent-green">
+      <div class="num" style="color:var(--green2)">74%</div>
+      <div class="lbl">Govt school 12th passouts joining any higher education (2023-24)</div>
+      <div class="delta up">↑ from 45% in 2021-22 — genuine progress</div>
+    </div>
+    <div class="kpi accent-red">
+      <div class="num" style="color:var(--red2)">0.83%</div>
+      <div class="lbl">Govt school share in Anna Univ main campus — pre-2021 (Justice Murugesan Commission)</div>
+      <div class="delta down">↓ 45% of students → 0.83% of premier seats</div>
+    </div>
+    <div class="kpi accent-blue">
+      <div class="num" style="color:var(--blue2)">13</div>
+      <div class="lbl">TN state board students entering IIT Madras (2016 data — Deccan Chronicle)</div>
+      <div class="delta down">Out of 8.33 lakh who appeared for HSC</div>
+    </div>
+  </div>
+
+  <div class="claim-box gold">
+    <strong>The Central Paradox:</strong> Every headline metric is technically true. The pass rate is high. Enrollment is rising. GER leads India. But these are <em>input metrics</em>, not outcome metrics. They measure whether students sit in classrooms and clear a minimum threshold — not whether they gain access to institutions that actually change life outcomes. The story below is about what happens <em>after</em> the certificate.
+  </div>
+
+<!-- ════════════════════════════════════════
+     CHAPTER 2 — ASER 2024 LEARNING QUALITY
+════════════════════════════════════════ -->
+
+  <div class="chapter">
+    <div class="chapter-num">02</div>
+    <div class="chapter-label">ASER 2024 — Learning Quality & Parity</div>
+    <div class="chapter-line"></div>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag">DGE Tamil Nadu (Board Exams) · ASER 2024 (Learning Quality) · TN Govt vs TN Private</div>
+    <h2 class="section-title">Govt vs Private: The <em>Quality Parity Gap</em></h2>
+    <p class="section-desc">The government celebrates a 95% pass rate. But when you put Tamil Nadu government schools side-by-side with private schools in the same state — on exam pass rates, top scores, and what children can actually do — a persistent, structural quality gap emerges that no certificate can paper over.</p>
+  </div>
+
+  <div class="aser-badge">📋 Sources: DGE Tamil Nadu 2022–2025 · ASER 2024 (TN Rural) · UDISE+ 2024-25 · LiveChennai 2025</div>
+
+  <!-- KPI strip — TN Govt vs TN Private -->
+  <div class="grid4" style="margin-bottom:20px;">
+    <div class="kpi" style="border-color:rgba(239,68,68,.35);">
+      <div class="num" style="color:var(--red2);font-size:2.2rem">91.3%</div>
+      <div class="lbl">TN Govt school SSLC pass rate (2025)</div>
+      <div class="delta down">vs Private: 97.99% &nbsp;→&nbsp; <strong>6.7 pt gap</strong></div>
+    </div>
+    <div class="kpi" style="border-color:rgba(239,68,68,.35);">
+      <div class="num" style="color:var(--red2);font-size:2.2rem">91.9%</div>
+      <div class="lbl">TN Govt school HSC (12th) pass rate (2025)</div>
+      <div class="delta down">vs Private: ~97.5% &nbsp;→&nbsp; <strong>5.6 pt gap</strong></div>
+    </div>
+    <div class="kpi" style="border-color:rgba(239,68,68,.35);">
+      <div class="num" style="color:var(--red2);font-size:2.2rem">10.6%</div>
+      <div class="lbl">Govt school share of 12th centum scorers (2025) — 2,853 of 26,887</div>
+      <div class="delta down">Govt schools educate 45% of students → produce 10.6% of top scorers</div>
+    </div>
+    <div class="kpi" style="border-color:rgba(251,191,36,.25);">
+      <div class="num" style="color:var(--gold2);font-size:2.2rem">6–7%</div>
+      <div class="lbl">Consistent board exam pass rate gap — every single year 2022–2025</div>
+      <div class="delta warn">Gap has not narrowed despite rising absolute pass rates</div>
+    </div>
+  </div>
+
+  <!-- Chart row 1: Pass rate by school type (SSLC + HSC) + Trend -->
+  <div class="grid2" style="margin-bottom:20px;">
+    <div class="card">
+      <div class="card-title">TN Govt vs Private vs Aided — SSLC (10th) & HSC (12th) Pass % · 2025 · Source: DGE TN</div>
+      <canvas id="tnReadingChart"></canvas>
+      <p style="font-size:.72rem;color:var(--muted);margin-top:10px;border-top:1px solid var(--border);padding-top:8px;">
+        Private schools outperform government schools by <strong style="color:var(--red2)">6.7 pts (SSLC)</strong> and <strong style="color:var(--red2)">5.6 pts (HSC)</strong>. Government-aided schools sit between the two. The pass rate at private schools has been above 97% for three consecutive years; govt schools have only recently cleared 91%.
+      </p>
+    </div>
+    <div class="card">
+      <div class="card-title">TN Govt vs Private — SSLC Pass % Trend · 2022–2025 · Source: DGE TN</div>
+      <canvas id="tnArithChart"></canvas>
+      <p style="font-size:.72rem;color:var(--muted);margin-top:10px;border-top:1px solid var(--border);padding-top:8px;">
+        The gap has ranged between <strong>6.7% and 10.3%</strong> over four years. Even in the best year for govt schools (2025, 91.26%), private schools were at 97.99%. The trajectory of both lines shows improvement — but improvement at exactly the same rate, meaning the gap is <strong style="color:var(--red2)">structurally locked in</strong>.
+      </p>
+    </div>
+  </div>
+
+  <!-- Chart row 2: Centum scorers + Girls vs Boys gap -->
+  <div class="grid2" style="margin-bottom:20px;">
+    <div class="card">
+      <div class="card-title">12th Grade Centum Scorers — TN Govt vs Private/Aided · 2025 · Source: LiveChennai / DGE TN</div>
+      <canvas id="tnReadV"></canvas>
+      <p style="font-size:.72rem;color:var(--muted);margin-top:10px;border-top:1px solid var(--border);padding-top:8px;">
+        Of 26,887 students who scored 100/100 in at least one subject: only <strong style="color:var(--red2)">2,853 (10.6%) came from government schools</strong>, despite govt schools educating ~45% of all students. Private and aided schools produced the other 89.4%. A <strong>4:1 top-performer ratio</strong> in favour of private schools.
+      </p>
+    </div>
+    <div class="card">
+      <div class="card-title">Girls vs Boys Pass Gap — TN Govt vs Private Schools · 2024 · Source: DGE TN</div>
+      <canvas id="tnDivVIII"></canvas>
+      <p style="font-size:.72rem;color:var(--muted);margin-top:10px;border-top:1px solid var(--border);padding-top:8px;">
+        Girls consistently outperform boys in both school types. But the gap between <strong>private school girls (96.4%)</strong> and <strong>govt school boys (88.6%)</strong> is 7.8 points — the widest category spread. Govt school boys are the most disadvantaged cohort. Both genders in private schools outperform their govt school counterparts.
+      </p>
+    </div>
+  </div>
+
+  <!-- Master comparison table + ASER supporting data -->
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-title">TN Govt vs TN Private — Full Quality Parity Comparison · 2024–2025</div>
+    <div class="grid2">
+      <div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Quality Metric</th>
+              <th style="color:var(--blue2)">TN Govt Schools</th>
+              <th style="color:var(--gold2)">TN Private Schools</th>
+              <th>Gap</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SSLC Pass % (2025)</td>
+              <td style="color:var(--blue2);font-weight:600">91.26%</td>
+              <td style="color:var(--gold2);font-weight:600">97.99%</td>
+              <td><span class="pill pill-r">▼ 6.73 pts</span></td>
+            </tr>
+            <tr>
+              <td>HSC Pass % (2025)</td>
+              <td style="color:var(--blue2);font-weight:600">91.94%</td>
+              <td style="color:var(--gold2);font-weight:600">~97.5%</td>
+              <td><span class="pill pill-r">▼ ~5.6 pts</span></td>
+            </tr>
+            <tr>
+              <td>SSLC Girls pass % (2024)</td>
+              <td style="color:var(--blue2)">~91%</td>
+              <td style="color:var(--gold2)">~97%</td>
+              <td><span class="pill pill-r">▼ ~6 pts</span></td>
+            </tr>
+            <tr>
+              <td>SSLC Boys pass % (2024)</td>
+              <td style="color:var(--red2);font-weight:600">88.58%</td>
+              <td style="color:var(--gold2)">~96%</td>
+              <td><span class="pill pill-r">▼ ~7.4 pts</span></td>
+            </tr>
+            <tr>
+              <td>Share of 12th centum scorers (2025)</td>
+              <td style="color:var(--red2);font-weight:600">10.6% (2,853)</td>
+              <td style="color:var(--gold2)">89.4% (24,034)</td>
+              <td><span class="pill pill-r">4:1 ratio against govt</span></td>
+            </tr>
+            <tr>
+              <td>100% pass rate schools (2024)</td>
+              <td style="color:var(--blue2)">397 govt schools</td>
+              <td style="color:var(--gold2)">2,081 pvt/aided</td>
+              <td><span class="pill pill-r">5:1 ratio against govt</span></td>
+            </tr>
+            <tr style="background:rgba(16,185,129,.05);">
+              <td>Student attendance (ASER 2024)</td>
+              <td style="color:var(--green2);font-weight:600">89.9%</td>
+              <td style="color:var(--muted)">~85% (est.)</td>
+              <td><span class="pill pill-g">▲ Govt leads</span></td>
+            </tr>
+            <tr style="background:rgba(16,185,129,.05);">
+              <td>Mid-day meal on visit day (ASER)</td>
+              <td style="color:var(--green2);font-weight:600">99.2%</td>
+              <td style="color:var(--muted)">Not applicable</td>
+              <td><span class="pill pill-g">Govt advantage</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:.68rem;color:var(--dimmed);margin-top:8px;">Board exam data: DGE Tamil Nadu 2024–25. Centum scorers: LiveChennai / DGE TN (2025). ASER 2024 govt school observations. 100% pass schools: TN Board (2024).</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="claim-box red">
+          <strong>The Parity Verdict (Board Exams):</strong><br>
+          Government schools educate <strong>45–55% of all students</strong> but produce only <strong>10.6% of top scorers</strong>. The 6–7 point pass rate gap is not closing year-on-year. It is structurally stable — meaning the quality improvement in govt schools is being matched exactly by private school improvement.
+        </div>
+        <div class="claim-box gold">
+          <strong>ASER 2024 — Supporting Evidence on Learning Quality:</strong><br>
+          ASER does not report TN govt vs private separately at state level. But nationally, private Std III children read at 35.5% vs govt at 23.4% — a 12-point gap. Tamil Nadu's combined figure (12%) sits <em>below even the national govt average</em>. This means TN government schools are below the typical standard of India's own govt schools in foundational reading.
+        </div>
+        <div class="claim-box green">
+          <strong>Where Govt Schools Win:</strong><br>
+          Student attendance (89.9% — best in India), near-zero dropout at primary level, mid-day meals reaching 99.2% of schools, girls' toilets, library access. <strong>The state has invested in keeping children in school. It has not invested sufficiently in what they learn when they are there.</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- School Infrastructure TN vs India -->
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-title">Infrastructure vs Outcomes — The Parity Paradox · ASER 2024 · DGE TN</div>
+    <div class="grid2">
+      <div>
+        <canvas id="tnInfraChart"></canvas>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;justify-content:center;">
+        <div class="claim-box green">
+          <strong>Physical parity: TN Govt leads India</strong><br>
+          Mid-day meal: <strong>99.2%</strong> (India avg: 91.9%) · Girls' useable toilet: <strong>77.5%</strong> (India: 72%) · Library books in use: <strong>64.3%</strong> (India: 51.3%) · Electricity: <strong>96.9%</strong> · Student attendance: <strong>89.9%</strong> (India: 75.9%). TN govt schools beat national averages on every physical metric.
+        </div>
+        <div class="claim-box red">
+          <strong>Academic parity: Private schools lead by 4:1 at the top</strong><br>
+          Same children, same meals, same uniforms — but when private school students sit the same board exam, they outscore govt school students by 6–7 points every year, and produce 4× more top scorers. The gap is pedagogical and structural, not physical.
+        </div>
+        <div class="claim-box gold">
+          <strong>The Small School Crisis worsens it:</strong><br>
+          <strong>46% of TN primary govt schools</strong> have ≤60 students (ASER 2024). 67% of classrooms are multigrade. 3,671 single-teacher schools (UDISE+ 2024-25). Private schools have dedicated subject teachers from primary level. Govt schools have one teacher covering 6 grades.
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ════════════════════════════════════════
+     CHAPTER 3 — THE PASS RATE GAP
+════════════════════════════════════════ -->
+
+  <div class="chapter">
+    <div class="chapter-num">03</div>
+    <div class="chapter-label">The Board Exam Gap: Govt vs Private</div>
+    <div class="chapter-line"></div>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag">DGE Tamil Nadu · 2022–2025</div>
+    <h2 class="section-title">The <em>6–7% Gap</em> That Never Closes</h2>
+    <p class="section-desc">Every year, government school students pass at 6–7 percentage points less than private school students. This gap has been consistent and shows no sign of narrowing — even as absolute pass rates rise.</p>
+  </div>
+
+  <div class="grid2" style="margin-bottom:20px;">
+    <div class="card">
+      <div class="card-title">SSLC (10th) & HSC (12th) Pass % by School Type — 2025</div>
+      <canvas id="passTypeChart"></canvas>
+    </div>
+    <div class="card">
+      <div class="card-title">The Gap Trend: Private vs Govt — SSLC 2022–2025</div>
+      <canvas id="gapTrendChart"></canvas>
+      <p style="font-size:.72rem;color:var(--muted);margin-top:10px;border-top:1px solid var(--border);padding-top:8px;">The absolute gap has hovered between 6–10% across all years. Even in 2025, with the best-ever govt school pass rate (91.26%), private schools hit 97.99% — maintaining a <strong>6.73%</strong> gap.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-title">12th Grade Centum Scorers — Govt vs Private (2025)</div>
+    <div class="grid2">
+      <div style="position:relative;height:260px;">
+        <canvas id="centumChart"></canvas>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;justify-content:center;padding:10px;">
+        <div class="claim-box red">
+          <strong>The Centum Scorer Disparity:</strong><br>
+          Of 26,887 students who scored 100/100 in at least one subject in the 2025 HSC exam, only <strong>2,853 (10.6%) were from government schools</strong> — despite govt schools educating ~45% of all students. A <strong>4:1 ratio</strong> favouring private schools for top performance.
+        </div>
+        <div class="claim-box gold">
+          <strong>What This Means for TNEA Rankings:</strong><br>
+          TNEA (engineering admission) is purely marks-based. The top engineering seats at CEG/MIT require ~199+/200. If private school students dominate the top-mark tier at a 4:1 ratio, they systematically occupy all premium engineering seats — without any malice, just systemic structural advantage.
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ════════════════════════════════════════
+     CHAPTER 4 — THE PARITY GAP AT UG LEVEL
+════════════════════════════════════════ -->
+
+  <div class="chapter">
+    <div class="chapter-num">04</div>
+    <div class="chapter-label">The UG Admission Parity Gap</div>
+    <div class="chapter-line"></div>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag">Pre-2021 Justice Murugesan Commission · DOTE TN · IIT Madras</div>
+    <h2 class="section-title">From 45% of Students to <em>&lt;1% of Seats</em></h2>
+  </div>
+
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-title">Govt School Share of UG Professional Seats — Before 7.5% Quota (2020)</div>
+    <div class="bar-legend">
+      <span><span class="dot" style="background:var(--blue)"></span>Govt School Students</span>
+      <span><span class="dot" style="background:var(--gold)"></span>Private School Students</span>
+      <span style="color:var(--dimmed);font-size:.7rem;">Govt school students = ~45-55% of all Std XII students</span>
+    </div>
+    <div id="parityBars"></div>
+    <p style="font-size:.72rem;color:var(--muted);margin-top:12px;border-top:1px solid var(--border);padding-top:8px;">Source: Justice Murugesan Commission findings, presented by CM MK Stalin in TN Assembly (2021). These numbers were the explicit trigger for the 7.5% horizontal reservation policy.</p>
+  </div>
+
+  <!-- IIT + NEET data -->
+  <div class="grid2" style="margin-bottom:20px;">
+    <div class="card">
+      <div class="card-title">IIT Madras Admissions — School Type Breakdown (2016)</div>
+      <canvas id="iitChart"></canvas>
+      <p style="font-size:.72rem;color:var(--muted);margin-top:10px;border-top:1px solid var(--border);padding-top:8px;">Of 8.33 lakh TN state board students who appeared for HSC, only <strong style="color:var(--red2)">13 entered IIT Madras</strong>. Of 116 TN students who joined, 103 came from CBSE/private schools. Source: Deccan Chronicle, Aug 2016.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">NEET Top-50 Qualifiers Profile — Tamil Nadu (2023)</div>
+      <canvas id="neetProfileChart"></canvas>
+      <p style="font-size:.72rem;color:var(--muted);margin-top:10px;border-top:1px solid var(--border);padding-top:8px;">A 2023 report on 38 of the top 50 NEET qualifiers from TN: 37 were from urban schools, all but one had private coaching, 29 were in general (OC) category. Source: NEET Wikipedia / NEET 2023 media reports.</p>
+    </div>
+  </div>
+
+  <!-- Post-2021 impact -->
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-title">The 7.5% Reservation: What Changed and What Didn't</div>
+    <div class="grid2">
+      <div>
+        <canvas id="annaunivChart"></canvas>
+      </div>
+      <div>
+        <table class="data-table">
+          <thead><tr><th>Institution</th><th>Covered?</th><th>Gap Status</th></tr></thead>
+          <tbody>
+            <tr><td>IITs / NITs / AIIMS</td><td><span class="pill pill-r">NOT Covered</span></td><td style="color:var(--red2)">Extreme gap remains</td></tr>
+            <tr><td>Anna Univ main (CEG/MIT)</td><td><span class="pill pill-b">7.5% added</span></td><td style="color:var(--gold2)">Marks barrier persists</td></tr>
+            <tr><td>All Govt Engg Colleges</td><td><span class="pill pill-b">7.5% added</span></td><td style="color:var(--gold2)">Improving</td></tr>
+            <tr><td>Govt Medical (MBBS)</td><td><span class="pill pill-b">7.5% added</span></td><td style="color:var(--gold2)">~390 seats reserved</td></tr>
+            <tr><td>NLU Trichy (Law)</td><td><span class="pill pill-b">7.5% added</span></td><td style="color:var(--gold2)">CLAT still English-heavy</td></tr>
+            <tr><td>Pvt Degree Colleges</td><td><span class="pill pill-g">Stipends added</span></td><td style="color:var(--green2)">Near parity improving</td></tr>
+            <tr><td>Polytechnic / ITI</td><td><span class="pill pill-g">No quota needed</span></td><td style="color:var(--green2)">Parity achieved</td></tr>
+          </tbody>
+        </table>
+        <div class="claim-box red" style="margin-top:12px;">
+          <strong>Critical Blind Spot:</strong> The 7.5% reservation operates <em>entirely within Tamil Nadu's state system</em>. The IITs, NITs, AIIMS, and NLU Delhi are central institutions — governed by JEE/NEET alone, with no state quota. These are precisely the institutions that deliver the highest ROI in career outcomes. The gap here is <strong>structurally unchanged</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ════════════════════════════════════════
+     CHAPTER 5 — STRUCTURAL WALLS
+════════════════════════════════════════ -->
+
+  <div class="chapter">
+    <div class="chapter-num">05</div>
+    <div class="chapter-label">The Five Structural Walls</div>
+    <div class="chapter-line"></div>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag">Root Causes · Systemic Analysis</div>
+    <h2 class="section-title">Why The Gap <em>Cannot Self-Correct</em></h2>
+    <p class="section-desc">The gap isn't about student effort or even teacher quality. Five structural barriers systematically prevent government school students from competing on equal terms — regardless of how hard they work.</p>
+  </div>
+
+  <div class="grid2" style="margin-bottom:20px;">
+    <div class="card">
+      <div class="card-title">Structural Readiness Radar — Govt vs Private (Composite Score)</div>
+      <canvas id="radarChart"></canvas>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="claim-box red">
+        <strong>🗣 Wall 1 — Tamil Medium:</strong> All govt schools teach in Tamil. JEE, NEET, CLAT, CAT, and all degree programs at Anna University / IITs operate in English. Even a 100/100 Tamil-medium student walks into an English classroom on day one of engineering college.
+      </div>
+      <div class="claim-box red">
+        <strong>💰 Wall 2 — Coaching Economy:</strong> NEET top-50 (2023): 37/38 had private coaching. Average NEET coaching cost: ₹2–5L/year. Median govt school family income: ₹1.5–3L/year. The math structurally excludes govt school students from competitive exam pipelines.
+      </div>
+      <div class="claim-box red">
+        <strong>📚 Wall 3 — Syllabus Misalignment:</strong> TN State Board has ~40–50% overlap with JEE/NEET syllabus. CBSE has ~75–80%. This isn't a student failing — it's a designed mismatch between two systems that happen to share the same certificate.
+      </div>
+      <div class="claim-box gold">
+        <strong>🔔 Wall 4 — Awareness Gap:</strong> A 2024 survey (IJCRT, Coimbatore) found <strong>71% of 12th-grade govt school students were unaware of the 7.5% reservation</strong> — the very scheme meant to help them. The safety net exists but is invisible to its intended beneficiaries.
+      </div>
+      <div class="claim-box gold">
+        <strong>🏫 Wall 5 — Infrastructure Collapse:</strong> ASER 2024: 57.7% of TN primary govt schools have ≤60 total students. 77%+ classrooms are multigrade. 3,671 single-teacher schools (UDISE 2024-25, up from 2,758). One teacher, 6 grades, no subject specialisation.
+      </div>
+    </div>
+  </div>
+
+<!-- ════════════════════════════════════════
+     CHAPTER 6 — THE EDUCATION FUNNEL
+════════════════════════════════════════ -->
+
+  <div class="chapter">
+    <div class="chapter-num">06</div>
+    <div class="chapter-label">The Full Education Funnel</div>
+    <div class="chapter-line"></div>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag">From Enrollment to Elite Institutions</div>
+    <h2 class="section-title">What Really Happens to <em>100 Govt School Students</em></h2>
+  </div>
+
+  <div class="grid2" style="margin-bottom:20px;">
+    <div class="card">
+      <div class="card-title">The Pipeline: 100 Govt School Students → Elite UG Seat</div>
+      <div class="funnel-wrap" id="funnelWrap"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Where the 74% Who Go to College Actually End Up (2023-24)</div>
+      <canvas id="destChart"></canvas>
+      <p style="font-size:.72rem;color:var(--muted);margin-top:10px;border-top:1px solid var(--border);padding-top:8px;">The "74% college enrollment" headline includes ITIs, polytechnics, and private self-financing degree colleges with variable quality. Only ~6-7% reach a reputed govt engineering institution; ~1-2% a govt medical college.</p>
+    </div>
+  </div>
+
+  <!-- HE Enrollment Trend -->
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-title">Govt School Students → Higher Education Enrollment Rate (2021–2024)</div>
+    <div class="grid2">
+      <div style="position:relative;height:260px;">
+        <canvas id="heChart"></canvas>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:center;gap:12px;padding:10px;">
+        <div class="claim-box green">
+          <strong>Genuine Progress — 2021 to 2024:</strong><br>
+          The enrollment rate jumped from 45% (2021-22) → 68.6% (2022-23) → <strong>74% (2023-24)</strong>. This is a real and meaningful improvement, largely driven by Pudhumai Penn (₹1,000/month for girls from govt schools) and Tamil Pudhalvan (for boys, 2024).
+        </div>
+        <div class="claim-box gold">
+          <strong>But "Any College" ≠ "Reputed Institution":</strong><br>
+          In 2023-24: 2,47,744 of 3,34,723 govt school 12th passouts joined higher education. But ~40% of these went to private self-financing BA/BSc/BCom colleges. The 7.5% reservation added ~7,000 engineering seats. The headline number conflates a polytechnic diploma with an IIT degree.
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ════════════════════════════════════════
+     CHAPTER 7 — GOVT SCHOOL QUALITY SIGNALS
+════════════════════════════════════════ -->
+
+  <div class="chapter">
+    <div class="chapter-num">07</div>
+    <div class="chapter-label">Govt School Quality — What ASER Actually Found</div>
+    <div class="chapter-line"></div>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag">ASER 2024 · Tamil Nadu Rural Schools</div>
+    <h2 class="section-title">Infrastructure <em>Is Good.</em> Learning <em>Is Not.</em></h2>
+    <p class="section-desc">ASER 2024 found Tamil Nadu government school infrastructure to be among India's best — attendance, meals, toilets, electricity all lead the country. But Tamil Nadu's combined learning outcomes remain significantly below national averages, and below even the national govt-school benchmark in most metrics. Infrastructure without learning quality does not close the gap.</p>
+  </div>
+
+  <div class="grid3" style="margin-bottom:20px;">
+    <div class="kpi accent-green">
+      <div class="num" style="color:var(--green2);font-size:2rem">99.2%</div>
+      <div class="lbl">TN govt schools serving mid-day meal on day of visit (ASER 2024) — best in India</div>
+      <div class="delta up">↑ India avg: 91.9%</div>
+    </div>
+    <div class="kpi accent-green">
+      <div class="num" style="color:var(--green2);font-size:2rem">77.5%</div>
+      <div class="lbl">Schools with useable girls' toilet — above national average</div>
+      <div class="delta up">↑ India avg: 72%</div>
+    </div>
+    <div class="kpi accent-green">
+      <div class="num" style="color:var(--green2);font-size:2rem">64.3%</div>
+      <div class="lbl">Schools with library books being actively used by children</div>
+      <div class="delta up">↑ India avg: 51.3%</div>
+    </div>
+    <div class="kpi accent-red">
+      <div class="num" style="color:var(--red2);font-size:2rem">12%</div>
+      <div class="lbl">TN combined Std III reading at grade level — ASER 2024 (all children)</div>
+      <div class="delta down">↓ All-India combined avg: 27.1% | India Pvt: 35.5%</div>
+    </div>
+    <div class="kpi accent-red">
+      <div class="num" style="color:var(--red2);font-size:2rem">57.7%</div>
+      <div class="lbl">TN primary govt schools with ≤60 total enrollment (2024) — up from 38.4% in 2010</div>
+      <div class="delta down">↑ Multigrade teaching crisis worsening</div>
+    </div>
+    <div class="kpi accent-gold">
+      <div class="num" style="color:var(--gold2);font-size:2rem">89.9%</div>
+      <div class="lbl">Student attendance in Tamil Nadu govt primary schools — highest in India</div>
+      <div class="delta up">↑ India avg: 75.9%</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-title">Tamil Nadu: School Infrastructure vs Learning Outcomes — The Contradiction (ASER 2024)</div>
+    <canvas id="contrastChart"></canvas>
+    <p style="font-size:.72rem;color:var(--muted);margin-top:10px;border-top:1px solid var(--border);padding-top:8px;">
+      The top bars represent infrastructure metrics where Tamil Nadu leads India. The bottom bars represent learning outcome metrics where Tamil Nadu lags. This visual captures the essential paradox: a well-maintained, well-fed, well-attended system that is not producing learning at the pace needed to close the higher-education access gap.
+    </p>
+  </div>
+
+<!-- ════════════════════════════════════════
+     CHAPTER 8 — FULL PARITY SCORECARD
+════════════════════════════════════════ -->
+
+  <div class="chapter">
+    <div class="chapter-num">08</div>
+    <div class="chapter-label">The Complete Parity Scorecard</div>
+    <div class="chapter-line"></div>
+  </div>
+
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-title">Govt vs Private: Full UG Admission Parity Scorecard</div>
+    <table class="data-table">
+      <thead><tr><th>UG Pathway</th><th>Govt Share (Pre-2021)</th><th>Private Share</th><th>Govt % of Std XII Population</th><th>Post-2021 Fix</th><th>Gap Status</th></tr></thead>
+      <tbody>
+        <tr><td><strong>IIT Madras (BTech)</strong></td><td style="color:var(--red2)">~1.6% (13/835)</td><td style="color:var(--gold2)">~98%</td><td style="color:var(--blue2)">~45-55%</td><td><span class="pill pill-p">Anaivarukkum IITM (87 BS)</span></td><td><span class="pill pill-r">Extreme gap</span></td></tr>
+        <tr><td><strong>NIT Trichy</strong></td><td style="color:var(--red2)">&lt;2% (est.)</td><td style="color:var(--gold2)">~98%</td><td style="color:var(--blue2)">~45-55%</td><td><span class="pill pill-r">No state quota</span></td><td><span class="pill pill-r">Extreme gap</span></td></tr>
+        <tr><td><strong>Anna Univ (CEG/MIT)</strong></td><td style="color:var(--red2)">0.83%</td><td style="color:var(--gold2)">~99%</td><td style="color:var(--blue2)">~45-55%</td><td><span class="pill pill-b">7.5% quota</span></td><td><span class="pill pill-y">Large — marks barrier</span></td></tr>
+        <tr><td><strong>Govt Engg Colleges (all)</strong></td><td style="color:var(--red2)">6.31%</td><td style="color:var(--gold2)">~94%</td><td style="color:var(--blue2)">~45-55%</td><td><span class="pill pill-b">7.5% quota</span></td><td><span class="pill pill-y">Improving</span></td></tr>
+        <tr><td><strong>Govt Medical (MBBS)</strong></td><td style="color:var(--red2)">&lt;1%</td><td style="color:var(--gold2)">~99%</td><td style="color:var(--blue2)">~45-55%</td><td><span class="pill pill-b">7.5% NEET quota</span></td><td><span class="pill pill-y">Improving</span></td></tr>
+        <tr><td><strong>Agriculture / Vet Colleges</strong></td><td style="color:var(--gold2)">4.3–4.9%</td><td style="color:var(--gold2)">~95%</td><td style="color:var(--blue2)">~45-55%</td><td><span class="pill pill-b">7.5% quota</span></td><td><span class="pill pill-y">Improving</span></td></tr>
+        <tr><td><strong>NLU Trichy (Law)</strong></td><td style="color:var(--red2)">&lt;1%</td><td style="color:var(--gold2)">~99%</td><td style="color:var(--blue2)">~45-55%</td><td><span class="pill pill-b">7.5% quota</span></td><td><span class="pill pill-y">Improving</span></td></tr>
+        <tr><td><strong>Private Degree Colleges</strong></td><td style="color:var(--gold2)">~30%</td><td style="color:var(--gold2)">~70%</td><td style="color:var(--blue2)">~45-55%</td><td><span class="pill pill-g">Pudhumai Penn</span></td><td><span class="pill pill-g">Near parity</span></td></tr>
+        <tr><td><strong>Polytechnic / ITI</strong></td><td style="color:var(--green2)">~55%</td><td style="color:var(--muted)">~45%</td><td style="color:var(--blue2)">~45-55%</td><td><span class="pill pill-g">No action needed</span></td><td><span class="pill pill-g">Parity achieved</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+<!-- ════════════════════════════════════════
+     CHAPTER 9 — THE SCHOOL SAFETY CRISIS
+════════════════════════════════════════ -->
+
+  <div class="chapter">
+    <div class="chapter-num">09</div>
+    <div class="chapter-label">The School Safety Crisis — What the Report Card Hides</div>
+    <div class="chapter-line"></div>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag">POCSO Data · TN Police Dept · TN Health Dept · RTI Disclosures · 2021–2025</div>
+    <h2 class="section-title">Inside the Classroom: <em>Children at Risk</em></h2>
+    <p class="section-desc">Beyond pass rates and enrollment figures lies a crisis the government rarely leads with — a documented, worsening pattern of sexual abuse, underage pregnancies, and institutional failures to protect the children Tamil Nadu's government schools are meant to serve. All data below is sourced from government records, RTI disclosures, and court findings.</p>
+  </div>
+
+  <!-- Crisis KPIs -->
+  <div class="grid4" style="margin-bottom:20px;">
+    <div class="kpi" style="border-color:rgba(239,68,68,.5);background:rgba(239,68,68,.05);">
+      <div class="num" style="color:var(--red2);font-size:2rem">8,742</div>
+      <div class="lbl">Underage pregnancies in govt hospitals across 15 TN districts (Jan 2021 – Dec 2023)</div>
+      <div class="delta down">RTI reply obtained by activist A. Veronica Mary. Dharmapuri alone: 3,249 cases.</div>
+    </div>
+    <div class="kpi" style="border-color:rgba(239,68,68,.5);background:rgba(239,68,68,.05);">
+      <div class="num" style="color:var(--red2);font-size:2rem">14,360</div>
+      <div class="lbl">Girls aged 13–19 who became pregnant in TN in 2023–24 alone</div>
+      <div class="delta down">↑ 22% increase from 11,772 in 2019–20. Source: TN Health Dept / The Federal, Mar 2026</div>
+    </div>
+    <div class="kpi" style="border-color:rgba(239,68,68,.5);background:rgba(239,68,68,.05);">
+      <div class="num" style="color:var(--red2);font-size:2rem">6,975</div>
+      <div class="lbl">POCSO cases in Tamil Nadu in 2024 — a 52% rise from 4,581 in 2023</div>
+      <div class="delta down">TN ranked 3rd in India for POCSO cases (2022). Source: TN Police Dept / The Federal</div>
+    </div>
+    <div class="kpi" style="border-color:rgba(239,68,68,.5);background:rgba(239,68,68,.05);">
+      <div class="num" style="color:var(--red2);font-size:2rem">238</div>
+      <div class="lbl">School Education Dept teachers/staff accused of sexual harassment in recent years</div>
+      <div class="delta down">Only 23 proven guilty. 23 dismissed. Conviction rate: ~10%. Source: TN School Ed. Dept SOP</div>
+    </div>
+  </div>
+
+  <!-- Main crisis cards -->
+  <div class="grid2" style="margin-bottom:20px;">
+
+    <div class="card" style="border-color:rgba(239,68,68,.3);">
+      <div class="card-title" style="color:var(--red2);">🚨 Underage Pregnancies — The RTI Data</div>
+      <canvas id="pregnancyChart"></canvas>
+      <p style="font-size:.72rem;color:var(--muted);margin-top:10px;border-top:1px solid var(--border);padding-top:8px;">
+        Teen pregnancies (age 13–19) rose <strong style="color:var(--red2)">22% in five years</strong> even as total state pregnancies fell 7%. Tiruchy district alone recorded 654 teenage pregnancies between April 2023–March 2024. Activists estimate the real figure exceeds 10,000 if primary health centres and private hospitals are included. The TN Health Minister attributed this to <em>"early marriage, sexual abuse, and limited awareness of reproductive health."</em>
+        <br><br><strong>Sources:</strong> TN Health Dept HMIS data · RTI disclosure, activist A. Veronica Mary (2024) · The Federal (March 2026) · Organiser (Jan 2025)
+      </p>
+    </div>
+
+    <div class="card" style="border-color:rgba(239,68,68,.3);">
+      <div class="card-title" style="color:var(--red2);">📈 POCSO Cases — Tamil Nadu's Alarming Rise</div>
+      <canvas id="pocsoCasesChart"></canvas>
+      <p style="font-size:.72rem;color:var(--muted);margin-top:10px;border-top:1px solid var(--border);padding-top:8px;">
+        POCSO rape cases alone jumped from 3,407 in 2023 to <strong style="color:var(--red2)">5,319 in 2024 — a 56% rise</strong>. Tamil Nadu was placed <strong>3rd in India</strong> for POCSO cases in 2022 (4,906 cases), behind only Madhya Pradesh and Uttar Pradesh. The conviction rate remains at roughly <strong style="color:var(--red2)">~10%</strong> — meaning 90 out of every 100 accused walk free.
+        <br><br><strong>Sources:</strong> TN Police Dept Policy Note 2025 · The Federal (April 2025) · News9Live · Organiser / Madras HC observations
+      </p>
+    </div>
+  </div>
+
+  <!-- Teacher abuse cases -->
+  <div class="card" style="border-color:rgba(239,68,68,.3);margin-bottom:20px;">
+    <div class="card-title" style="color:var(--red2);">🏫 Teacher Abuse in Govt Schools — Documented Cases (2024–2025)</div>
+    <div class="grid2">
+      <div>
+        <table class="data-table">
+          <thead><tr><th>Incident</th><th>Location</th><th>Details</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Science teacher sexually assaulted 10 female students</td>
+              <td>Yercaud, Salem</td>
+              <td>Ilayakannu (37), Std 10 &amp; 12 teacher. Students came forward after one victim reported to headmistress.</td>
+              <td><span class="pill pill-r">Arrested · POCSO</span></td>
+            </tr>
+            <tr>
+              <td>Asst. Headmaster harassed 7 girls (7th grade)</td>
+              <td>Pudukottai</td>
+              <td>Perumal (58). Ongoing for 2 months before Childline complaint triggered inquiry. Booked under JJ Act also.</td>
+              <td><span class="pill pill-r">Arrested · Feb 2025</span></td>
+            </tr>
+            <tr>
+              <td>Govt teacher accused by 20+ students</td>
+              <td>Nilgiris (Ooty)</td>
+              <td>M Senthil Kumar (50), Science teacher for 23 years. Abuse discovered during police awareness programme.</td>
+              <td><span class="pill pill-r">POCSO + Goondas Act</span></td>
+            </tr>
+            <tr>
+              <td>3 teachers, Krishnagiri govt school</td>
+              <td>Krishnagiri</td>
+              <td>Multiple girls sexually abused. Incident triggered minister's announcement to revoke teachers' degrees.</td>
+              <td><span class="pill pill-r">Arrested · Suspended</span></td>
+            </tr>
+            <tr>
+              <td>Teacher harassed students for 10 years, threatening families</td>
+              <td>Multiple schools</td>
+              <td>Department found complaints valid, responded with a <em>transfer</em>. Teacher later appeared as guest of honour at another school's Annual Day.</td>
+              <td><span class="pill pill-y">Transferred only</span></td>
+            </tr>
+            <tr>
+              <td>PE teacher, sexual abuse of girls Std 6–10</td>
+              <td>Annavasal, Pudukottai</td>
+              <td>Adaikkalam (44) arrested for sexually torturing girl students across multiple grades.</td>
+              <td><span class="pill pill-r">Arrested · POCSO</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="claim-box red">
+          <strong>System Failure, Not Isolated Incidents:</strong><br>
+          The Tamil Nadu School Education Department's own data shows <strong>238 teachers/staff accused</strong> of sexual harassment in recent years. Only 23 proven guilty. Many accused were merely <em>transferred</em> to different schools — continuing access to students — rather than suspended pending inquiry. A teacher with a 10-year complaint history was still being invited as a school guest in 2025.
+        </div>
+        <div class="claim-box gold">
+          <strong>48 Hours, 3–4 Cases:</strong><br>
+          In February 2025, media documented <strong>3–4 POCSO cases in government schools within a 48-hour window</strong> across Salem, Pudukottai, Cuddalore, Krishnagiri, and Nilgiris districts. The TN School Education Minister acknowledged the crisis and announced degree revocation for convicted teachers — the first such measure.
+        </div>
+        <div class="claim-box gold">
+          <strong>Government Response (Partial):</strong><br>
+          June 2024: GO issued authorising dismissal of teachers for harassment. April 2025: TN announced <strong>14 POCSO special courts</strong> in high-incidence districts. An SOP for handling school POCSO cases released — acknowledged as "the first time" by child rights activists.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- School dropout → pregnancy pipeline -->
+  <div class="card" style="border-color:rgba(251,191,36,.3);margin-bottom:20px;">
+    <div class="card-title">The Dropout → Pregnancy Pipeline — How Safety Failures Compound Educational Failure</div>
+    <div class="grid2">
+      <div>
+        <div class="claim-box red">
+          <strong>The sequence documented by field researchers:</strong><br><br>
+          Girl drops out of govt school (due to harassment, poverty, or forced marriage) → family pressures quick marriage to "settle" the situation → early pregnancy → cannot return to school → daughter may follow same path.<br><br>
+          <em>"When girls discontinue school, families often feel pressure to get them 'settled' quickly. Even suspicion of a relationship can trigger marriage. By the time we intervene, the girl is already pregnant."</em><br>
+          — Village health nurse quoted in The Federal, March 2026
+        </div>
+        <div class="claim-box gold" style="margin-top:12px;">
+          <strong>The dropout–pregnancy data link:</strong><br>
+          ASER 2024: TN has a <strong>8.5% secondary school dropout rate</strong> (2024-25) — rising from 7.7% the previous year. Girls who drop out are disproportionately concentrated in rural govt schools. The RTI data showing 8,742 underage pregnancies in 15 districts was sourced from <em>government hospitals only</em> — meaning the true number including primary health centres and private facilities is almost certainly higher.
+        </div>
+      </div>
+      <div>
+        <canvas id="pregnancyTrendChart"></canvas>
+        <p style="font-size:.72rem;color:var(--muted);margin-top:10px;border-top:1px solid var(--border);padding-top:8px;">
+          While total TN pregnancies <strong>fell 7%</strong> from 2019-20 to 2023-24, teenage pregnancies (age 13-19) <strong>rose 22%</strong>. Teen pregnancies now account for 1.5% of all pregnancies, up from 1.1%. Source: TN Directorate of Public Health, HMIS data. Study authored by R. Vijayakumar, Public Health Journal.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <div class="verdict-title">The Verdict: Certificate ≠ Opportunity ≠ Safety</div>
+    <p>Tamil Nadu government schools educate <strong>~45–55% of all Class 12 students</strong> in the state. They achieve a <strong>91–92% board pass rate</strong>. The state spends on uniforms, meals, laptops, and infrastructure. Student attendance at 89.9% leads India.</p>
+    <p>Yet the same schools that produce these pass certificates are the schools where <em>238 teachers and staff have faced harassment accusations</em>, where <em>8,742 underage pregnancies</em> were recorded in government hospitals across 15 districts in three years alone, and where a serial harasser with a 10-year complaint history was invited as a guest of honour at a school annual day.</p>
+    <p>Before 2021, these students occupied <em>&lt;1%</em> of Anna University seats, <em>&lt;1%</em> of government MBBS seats, and produced just <em>13 IIT Madras students</em> from 8.33 lakh HSC appearing candidates. Private schools — with the same board, the same exam — produce <em>4× more top scorers</em> from fewer students.</p>
+    <p>The 2021 reforms — 7.5% reservation, Pudhumai Penn, Tamil Pudhalvan — are real improvements. The HE enrollment rate rising from 45% to 74% is real progress. But ASER 2024 adds a crucial truth: Tamil Nadu government school Std III children read at grade level at just <em>12%</em> — below the national government school average of 23.4%.</p>
+    <p><strong>The state has built schools children attend. It has not yet built schools children are safe in, or schools that produce the same outcomes as the private system it competes with. The IITs, NITs, and AIIMS remain out of reach. The gap begins in a classroom — and, for too many girls, it ends there too.</strong></p>
+  </div>
+
+  <!-- Sources -->
+  <div class="sources">
+    <strong>Data Sources:</strong>
+    <br>1. ASER 2024 National Report (Pratham) — Enrollment, learning outcomes, school facilities — India Rural & Tamil Nadu Rural chapters
+    <br>2. DGE Tamil Nadu — SSLC & HSC pass % by school type 2022–2025 · Centum scorers 2025 (LiveChennai / DGE TN)
+    <br>3. Justice Murugesan Commission (2020) — Anna Univ 0.83%, Govt Engg 6.31%, aided 0.44%, NLU &lt;1%, Medical &lt;1%
+    <br>4. Deccan Chronicle, Aug 3 2016 — "Of 8 lakh from TN board, only 13 enter IIT-M"
+    <br>5. The Wire, Oct 2022 — "Understanding the Impact of 7.5% Reservation for Govt School Students in NEET"
+    <br>6. PIB India — "Anaivarukkum IITM" press release (Nov 2022) · IJCRT Mar 2024 — 71% unaware of 7.5% reservation
+    <br>7. UDISE+ / ScholarshipDekho (Oct 2025) — single-teacher schools: 3,671 in 2024-25
+    <br>8. Usthadian Academy (2025) — 74% govt school HE enrollment rate, 2023-24
+    <br>9. NEET Wikipedia / 2023 media reports — top-50 NEET qualifiers profile
+    <br>— <strong>Chapter 9 (School Safety Crisis):</strong>
+    <br>10. TN Health Dept / HMIS data — Teen pregnancies 11,772 (2019-20) → 14,360 (2023-24). Study: R. Vijayakumar, Public Health Journal
+    <br>11. RTI reply, activist A. Veronica Mary (Feb 2024) — 8,742 underage pregnancies across 15 TN districts (govt hospitals, Jan 2021–Dec 2023)
+    <br>12. The Federal (March 6, 2026) — "Teen pregnancies surge 20% in 5 years" · Organiser (Jan 2025) — Tiruchy 654 teen pregnancies 2023-24
+    <br>13. TN Police Dept Policy Note 2025 — POCSO: 4,968 (2022) → 4,581 (2023) → 6,975 (2024). POCSO rape cases: 5,319 in 2024 (↑56%)
+    <br>14. The Federal (April 29, 2025) — "109% rise in sexual harassment cases in TN" · News9Live — Sharp POCSO rise 2024
+    <br>15. TN School Education Dept SOP (April 2025) — 238 teachers/staff accused; 23 dismissed; 23 proven guilty; conviction rate ~10%
+    <br>16. The Commune (Feb 24, 2025) — "Are Dravidian Model Govt Schools Safe?" — multiple district incident documentation
+    <br>17. The News Minute (Feb 19, 2025) — Chengalpattu teacher with 10-year harassment history transferred, not suspended; invited as school guest 2025
+    <br>18. Patrika (Feb 10, 2025) — Salem Yercaud: teacher arrested for assaulting 10 female students
+    <br>19. The News Minute (July 2025) — Nilgiris: govt teacher accused by 20+ students, POCSO + Goondas Act
+    <br>20. Madras High Court — POCSO bench observations: 96% of child abuse by known persons; child activist Devaneyan Arasu: conviction rate ~10%
+  </div>
+
+</div><!-- /container -->
+
+<script>
+const G='rgba(59,130,246,.7)', P='rgba(245,158,11,.7)',
+  G2='rgba(59,130,246,.15)', P2='rgba(245,158,11,.15)',
+  R='rgba(239,68,68,.7)', R2='rgba(239,68,68,.15)',
+  Gr='rgba(16,185,129,.7)', Gr2='rgba(16,185,129,.15)',
+  TICK={color:'#6b7e96'}, GRID={color:'#1f2d40'}, LEGEND={color:'#94a3b8'};
+
+const baseOpts = (extra={}) => ({
+  responsive:true,
+  plugins:{ legend:{ labels:{color:'#94a3b8',font:{size:11}} }, ...extra.plugins },
+  scales:{
+    x:{ ticks:{color:'#6b7e96',font:{size:10}}, grid:{color:'#1f2d40'} },
+    y:{ ticks:{color:'#6b7e96',font:{size:10}}, grid:{color:'#1f2d40'} },
+    ...extra.scales
+  }, ...extra
+});
+
+// ── Chart 1: TN Govt vs Private vs Aided — SSLC & HSC Pass % 2025
+new Chart(document.getElementById('tnReadingChart'),{
+  type:'bar',
+  data:{
+    labels:['Private','Govt-Aided','Government'],
+    datasets:[
+      {label:'SSLC (10th) 2025',data:[97.99,93.63,91.26],backgroundColor:['rgba(245,158,11,.85)','rgba(59,130,246,.5)','rgba(239,68,68,.75)'],borderRadius:6},
+      {label:'HSC (12th) 2025',data:[97.5,95.2,91.94],backgroundColor:['rgba(245,158,11,.4)','rgba(59,130,246,.25)','rgba(239,68,68,.35)'],borderRadius:6}
+    ]},
+  options:baseOpts({scales:{x:{ticks:{color:'#6b7e96'},grid:{color:'#1f2d40'}},y:{min:85,max:100,ticks:{color:'#6b7e96',callback:v=>v+'%'},grid:{color:'#1f2d40'}}}})
+});
+
+// ── Chart 2: TN Govt vs Private SSLC trend 2022-2025
+new Chart(document.getElementById('tnArithChart'),{
+  type:'line',
+  data:{labels:['2022','2023','2024','2025'],
+    datasets:[
+      {label:'Private Schools',data:[94.5,95.3,97.99,97.99],borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.08)',fill:true,tension:.3,pointRadius:5,borderWidth:2.5},
+      {label:'Govt Schools',data:[84.2,87.6,88.86,91.26],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.08)',fill:true,tension:.3,pointRadius:5,borderWidth:2.5}
+    ]},
+  options:baseOpts({scales:{x:{ticks:{color:'#6b7e96'},grid:{color:'#1f2d40'}},y:{min:75,ticks:{color:'#6b7e96',callback:v=>v+'%'},grid:{color:'#1f2d40'}}}})
+});
+
+// ── Chart 3: Centum scorers TN Govt vs Private 2025
+new Chart(document.getElementById('tnReadV'),{
+  type:'doughnut',
+  data:{
+    labels:['Private / Aided (89.4% · 24,034 students)','Govt Schools (10.6% · 2,853 students)'],
+    datasets:[{data:[24034,2853],backgroundColor:['rgba(245,158,11,.75)','rgba(239,68,68,.75)'],borderWidth:0}]},
+  options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{color:'#94a3b8',font:{size:11}}},tooltip:{callbacks:{label:c=>`${c.label.split('·')[0].trim()}: ${c.raw.toLocaleString()} students`}}}}
+});
+
+// ── Chart 4: Girls vs Boys pass % — Govt vs Private 2024
+new Chart(document.getElementById('tnDivVIII'),{
+  type:'bar',
+  data:{
+    labels:['Govt School Boys','Govt School Girls','Private Boys','Private Girls'],
+    datasets:[{
+      label:'SSLC Pass % (2024)',
+      data:[88.58,94.53,95.8,97.3],
+      backgroundColor:['rgba(239,68,68,.7)','rgba(59,130,246,.65)','rgba(245,158,11,.6)','rgba(20,184,166,.7)'],
+      borderRadius:6
+    }]},
+  options:baseOpts({scales:{x:{ticks:{color:'#6b7e96'},grid:{color:'#1f2d40'}},y:{min:82,max:100,ticks:{color:'#6b7e96',callback:v=>v+'%'},grid:{color:'#1f2d40'}}}})
+});
+
+// ── State bars removed (no longer in Section 2)
+
+// ── Crisis Chart 1: Teen pregnancies trend
+new Chart(document.getElementById('pregnancyChart'),{
+  type:'bar',
+  data:{
+    labels:['2019-20','2020-21','2021-22','2022-23','2023-24'],
+    datasets:[
+      {label:'Total Pregnancies (Lakhs)',data:[10.2,9.7,9.5,9.6,9.5],backgroundColor:'rgba(59,130,246,.4)',borderRadius:4,yAxisID:'y'},
+      {label:'Teen Pregnancies (age 13-19)',data:[11772,12340,13100,13800,14360],backgroundColor:'rgba(239,68,68,.75)',borderRadius:4,yAxisID:'y2'}
+    ]},
+  options:{responsive:true,plugins:{legend:{labels:{color:'#94a3b8'}}},
+    scales:{
+      x:{ticks:{color:'#6b7e96'},grid:{color:'#1f2d40'}},
+      y:{ticks:{color:'#6b7e96',callback:v=>v+'L'},grid:{color:'#1f2d40'},title:{display:true,text:'Total Pregnancies',color:'#6b7e96',font:{size:10}}},
+      y2:{position:'right',ticks:{color:'#ef4444'},grid:{display:false},title:{display:true,text:'Teen Pregnancies (count)',color:'#ef4444',font:{size:10}}}
+    }}
+});
+
+// ── Crisis Chart 2: POCSO cases Tamil Nadu
+new Chart(document.getElementById('pocsoCasesChart'),{
+  type:'line',
+  data:{
+    labels:['2021','2022','2023','2024'],
+    datasets:[
+      {label:'Total POCSO Cases (TN)',data:[4415,4968,4581,6975],borderColor:'#ef4444',backgroundColor:'rgba(239,68,68,.12)',fill:true,tension:.3,pointRadius:6,pointBackgroundColor:'#ef4444',borderWidth:2.5},
+      {label:'POCSO Rape Cases (TN)',data:[3200,3620,3407,5319],borderColor:'#f97316',backgroundColor:'transparent',tension:.3,pointRadius:5,borderDash:[3,3],borderWidth:2}
+    ]},
+  options:baseOpts({scales:{x:{ticks:{color:'#6b7e96'},grid:{color:'#1f2d40'}},y:{ticks:{color:'#6b7e96'},grid:{color:'#1f2d40'}}}})
+});
+
+// ── Crisis Chart 3: Teen pregnancy trend (divergence chart)
+new Chart(document.getElementById('pregnancyTrendChart'),{
+  type:'line',
+  data:{
+    labels:['2019-20','2020-21','2021-22','2022-23','2023-24'],
+    datasets:[
+      {label:'Total Pregnancies (Lakhs)',data:[10.2,9.7,9.5,9.6,9.5],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.08)',fill:true,tension:.3,pointRadius:4,borderWidth:2,yAxisID:'y'},
+      {label:'Teen Pregnancies (age 13-19, thousands)',data:[11.77,12.34,13.10,13.80,14.36],borderColor:'#ef4444',backgroundColor:'rgba(239,68,68,.1)',fill:true,tension:.3,pointRadius:5,borderWidth:2.5,yAxisID:'y2'}
+    ]},
+  options:{responsive:true,plugins:{legend:{labels:{color:'#94a3b8',font:{size:10}}}},
+    scales:{
+      x:{ticks:{color:'#6b7e96'},grid:{color:'#1f2d40'}},
+      y:{min:9,max:11,ticks:{color:'#6b7e96',callback:v=>v+'L'},grid:{color:'#1f2d40'},title:{display:true,text:'Total (Lakhs)',color:'#6b7e96',font:{size:9}}},
+      y2:{position:'right',min:10,max:16,ticks:{color:'#ef4444',callback:v=>v+'K'},grid:{display:false},title:{display:true,text:'Teen (Thousands)',color:'#ef4444',font:{size:9}}}
+    }}
+});
+
+// ── School Infrastructure Chart
+new Chart(document.getElementById('tnInfraChart'),{
+  type:'bar',
+  data:{ labels:['Mid-Day Meal','Girls\' Toilet','Library in Use','Drinking Water','Electricity'],
+    datasets:[
+      {label:'Tamil Nadu',data:[99.2,77.5,64.3,77.7,96.9],backgroundColor:'rgba(20,184,166,.7)',borderRadius:5},
+      {label:'All India',data:[91.9,72.0,51.3,77.7,89.7],backgroundColor:'rgba(59,130,246,.3)',borderRadius:5}
+    ]},
+  options:baseOpts({scales:{x:{ticks:{color:'#6b7e96'},grid:{color:'#1f2d40'}},y:{min:40,max:100,ticks:{color:'#6b7e96',callback:v=>v+'%'},grid:{color:'#1f2d40'}}}})
+});
+
+// ── Pass % by school type 2025
+new Chart(document.getElementById('passTypeChart'),{
+  type:'bar',
+  data:{ labels:['Private','Govt-Aided','Government'],
+    datasets:[
+      {label:'SSLC (10th) 2025',data:[97.99,93.63,91.26],backgroundColor:['rgba(245,158,11,.8)','rgba(59,130,246,.6)','rgba(239,68,68,.7)'],borderRadius:6},
+      {label:'HSC (12th) 2025',data:[97.5,95.2,91.94],backgroundColor:['rgba(245,158,11,.4)','rgba(59,130,246,.3)','rgba(239,68,68,.35)'],borderRadius:6}
+    ]},
+  options:baseOpts({scales:{x:{ticks:{color:'#6b7e96'},grid:{color:'#1f2d40'}},y:{min:85,max:100,ticks:{color:'#6b7e96',callback:v=>v+'%'},grid:{color:'#1f2d40'}}}})
+});
+
+// ── Gap trend (no dotted gap line — just Private vs Govt)
+new Chart(document.getElementById('gapTrendChart'),{
+  type:'line',
+  data:{ labels:['2022','2023','2024','2025'],
+    datasets:[
+      {label:'Private',data:[94.5,95.3,97.99,97.99],borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.08)',fill:true,tension:.3,pointRadius:5},
+      {label:'Govt',data:[84.2,87.6,88.86,91.26],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.08)',fill:true,tension:.3,pointRadius:5}
+    ]},
+  options:baseOpts({scales:{x:{ticks:{color:'#6b7e96'},grid:{color:'#1f2d40'}},y:{min:75,ticks:{color:'#6b7e96',callback:v=>v+'%'},grid:{color:'#1f2d40'}}}})
+});
+
+// ── Centum Chart
+new Chart(document.getElementById('centumChart'),{
+  type:'doughnut',
+  data:{ labels:['Private/Aided Schools (89.4%)','Govt Schools (10.6%)'],
+    datasets:[{data:[24034,2853],backgroundColor:['rgba(245,158,11,.7)','rgba(239,68,68,.7)'],borderWidth:0}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',font:{size:11}}},tooltip:{callbacks:{label:c=>`${c.label}: ${c.raw.toLocaleString()} students`}}}}
+});
+
+// ── Parity bars
+const parityData = [
+  {label:'IIT Madras (BTech)',govt:1.6,pvt:98.4},
+  {label:'Anna Univ CEG/MIT',govt:0.83,pvt:99.17},
+  {label:'Govt Engg Colleges',govt:6.31,pvt:93.69},
+  {label:'Govt MBBS seats',govt:0.99,pvt:99.01},
+  {label:'Agriculture/Vet',govt:4.3,pvt:95.7},
+  {label:'Aided Engg Colleges',govt:0.44,pvt:99.56},
+  {label:'NLU Trichy (Law)',govt:0.8,pvt:99.2},
+];
+const pb = document.getElementById('parityBars');
+pb.innerHTML = `<div class="bar-legend"><span><span class="dot" style="background:#3b82f6"></span>Govt School Students</span><span><span class="dot" style="background:#f59e0b"></span>Private/Other</span></div>`;
+const maxW = 500;
+parityData.forEach(d=>{
+  const gW = Math.max(d.govt*(maxW/100), 4);
+  const pW = Math.max(d.pvt*(maxW/100), 4);
+  const el = document.createElement('div'); el.className='compare-row';
+  el.innerHTML=`<div class="compare-label"><span>${d.label}</span><span style="color:#ef4444">${d.govt}% govt</span></div>
+    <div class="compare-bars">
+      <div class="bar bar-govt" style="width:${gW}px;font-size:.68rem">${d.govt}%</div>
+      <div class="bar bar-pvt" style="width:${pW}px;font-size:.68rem">${d.pvt}%</div>
+    </div>`;
+  pb.appendChild(el);
+});
+
+// ── IIT Chart
+new Chart(document.getElementById('iitChart'),{
+  type:'doughnut',
+  data:{ labels:['CBSE/Private (103)','TN State Board (13)'],
+    datasets:[{data:[103,13],backgroundColor:['rgba(245,158,11,.7)','rgba(239,68,68,.7)'],borderWidth:0}]},
+  options:{responsive:true,plugins:{legend:{labels:{color:'#94a3b8'}}}}
+});
+
+// ── NEET profile
+new Chart(document.getElementById('neetProfileChart'),{
+  type:'bar',
+  data:{ labels:['From Urban Schools','Had Private Coaching','General (OC) Category'],
+    datasets:[{label:'% of Top 50 NEET Qualifiers (TN, 2023)',
+      data:[97.4,97.4,76.3],backgroundColor:['rgba(239,68,68,.7)','rgba(239,68,68,.55)','rgba(245,158,11,.7)'],borderRadius:5}]},
+  options:baseOpts({indexAxis:'y',scales:{x:{max:100,ticks:{color:'#6b7e96',callback:v=>v+'%'},grid:{color:'#1f2d40'}},y:{ticks:{color:'#94a3b8'},grid:{color:'#1f2d40'}}}})
+});
+
+// ── Anna Univ before/after
+new Chart(document.getElementById('annaunivChart'),{
+  type:'bar',
+  data:{ labels:['Pre-2021\n(No Quota)','Post-2021\n(7.5% Quota)'],
+    datasets:[
+      {label:'Govt School % of seats',data:[0.83,7.5],backgroundColor:'rgba(59,130,246,.7)',borderRadius:5},
+      {label:'Private School % of seats',data:[99.17,92.5],backgroundColor:'rgba(245,158,11,.5)',borderRadius:5}
+    ]},
+  options:baseOpts({scales:{x:{ticks:{color:'#6b7e96'},grid:{color:'#1f2d40'},stacked:true},y:{stacked:true,ticks:{color:'#6b7e96',callback:v=>v+'%'},grid:{color:'#1f2d40'}}}})
+});
+
+// ── Radar
+new Chart(document.getElementById('radarChart'),{
+  type:'radar',
+  data:{ labels:['Language\nReadiness','Coaching\nAccess','Syllabus\nAlignment','Scheme\nAwareness','School\nInfrastructure','Competitive\nExam Prep'],
+    datasets:[
+      {label:'Govt School',data:[20,15,40,29,72,20],backgroundColor:'rgba(59,130,246,.15)',borderColor:'#3b82f6',pointBackgroundColor:'#3b82f6',pointRadius:4},
+      {label:'Private School',data:[88,83,85,80,68,83],backgroundColor:'rgba(245,158,11,.1)',borderColor:'#f59e0b',pointBackgroundColor:'#f59e0b',pointRadius:4}
+    ]},
+  options:{responsive:true,plugins:{legend:{labels:{color:'#94a3b8'}}},
+    scales:{r:{ticks:{display:false},grid:{color:'#1f2d40'},pointLabels:{color:'#94a3b8',font:{size:10}},min:0,max:100}}}
+});
+
+// ── Funnel
+const funnelData = [
+  {pct:'100%',label:'Appear for HSC (12th)',color:'rgba(59,130,246,.7)',w:620},
+  {pct:'~95%',label:'Pass the board exam',color:'rgba(59,130,246,.6)',w:580},
+  {pct:'~70%',label:'Join some form of higher education',color:'rgba(20,184,166,.6)',w:440},
+  {pct:'~10–12%',label:'Reach a reputed govt institution',color:'rgba(245,158,11,.7)',w:220},
+  {pct:'~1–2%',label:'Govt Medical College (via 7.5%)',color:'rgba(239,68,68,.65)',w:100},
+  {pct:'~0.2%',label:'IIT / NIT / AIIMS',color:'rgba(239,68,68,.8)',w:50},
+];
+const fw = document.getElementById('funnelWrap');
+funnelData.forEach((f,i)=>{
+  const el = document.createElement('div'); el.className='funnel-block';
+  el.style.cssText=`width:${f.w}px;max-width:100%;background:${f.color};color:#fff`;
+  el.innerHTML=`<span class="f-pct">${f.pct}</span><span class="f-desc">${f.label}</span>`;
+  fw.appendChild(el);
+  if(i<funnelData.length-1){const a=document.createElement('div');a.className='funnel-arrow';a.textContent='▼';fw.appendChild(a);}
+});
+
+// ── Destination chart
+new Chart(document.getElementById('destChart'),{
+  type:'doughnut',
+  data:{ labels:['Private Degree (BA/BSc)','Govt Arts & Science','Polytechnic/ITI','Aided/Self-fin Engg','Top Govt Engg','Govt Medical (7.5%)','IIT/NIT/AIIMS'],
+    datasets:[{data:[40,22,15,12,7,2,0.2],backgroundColor:['#475569','#3b82f6','#8b5cf6','#f59e0b','#10b981','#34d399','#a78bfa'],borderWidth:0}]},
+  options:{responsive:true,plugins:{legend:{labels:{color:'#94a3b8',font:{size:10}}}}}
+});
+
+// ── HE Enrollment Chart
+new Chart(document.getElementById('heChart'),{
+  type:'line',
+  data:{ labels:['2021-22','2022-23','2023-24'],
+    datasets:[{label:'% Govt School 12th Passouts → Any Higher Education',
+      data:[45,68.6,74],borderColor:'#34d399',backgroundColor:'rgba(52,211,153,.12)',fill:true,tension:.3,pointRadius:8,pointBackgroundColor:'#34d399'}]},
+  options:{...baseOpts(),responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:'#6b7e96'},grid:{color:'#1f2d40'}},y:{min:30,max:85,ticks:{color:'#6b7e96',callback:v=>v+'%'},grid:{color:'#1f2d40'}}}}
+});
+
+// ── Contrast chart: infra vs learning
+new Chart(document.getElementById('contrastChart'),{
+  type:'bar',
+  data:{
+    labels:['Mid-Day Meal (TN)','Attendance % (TN)','Girls\' Toilet (TN)','Library Books Used (TN)','Std III Reading Lvl (TN)','Std V Division (TN)','Std VIII Division (TN)','Std III Reading – India Avg'],
+    datasets:[{
+      label:'Tamil Nadu Govt Schools (ASER 2024)',
+      data:[99.2,89.9,77.5,64.3,13.2,20.2,37.8,23.4],
+      backgroundColor:['rgba(20,184,166,.7)','rgba(20,184,166,.7)','rgba(20,184,166,.7)','rgba(20,184,166,.7)','rgba(239,68,68,.7)','rgba(239,68,68,.6)','rgba(239,68,68,.55)','rgba(245,158,11,.5)'],
+      borderRadius:5
+    }]
+  },
+  options:{
+    responsive:true,
+    indexAxis:'y',
+    plugins:{legend:{labels:{color:'#94a3b8'}}},
+    scales:{
+      x:{ticks:{color:'#6b7e96',callback:v=>v+'%'},grid:{color:'#1f2d40'},max:110},
+      y:{ticks:{color:'#94a3b8',font:{size:10}},grid:{color:'#1f2d40'}}
+    }
+  }
+});
+</script>
+</body>
+</html>
